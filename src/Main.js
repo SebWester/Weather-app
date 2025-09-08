@@ -1,7 +1,13 @@
 import Location from "./components/Location.js";
+import ShowWeather from "./components/ShowWeather.js";
 
 function Main() {
-  return <Location />;
+  return (
+    <div>
+      <Location />
+      <ShowWeather />
+    </div>
+  );
 }
 
 export default Main;

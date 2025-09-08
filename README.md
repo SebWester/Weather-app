@@ -1,4 +1,8 @@
-# Getting Started with Create React App
+# WEATHER APP TEST
+
+### Made with react
+
+- Using API:s from open-meteo and openstreetmap
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
