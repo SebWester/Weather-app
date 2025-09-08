@@ -4,6 +4,8 @@ import "../styles/locationStyles.css";
 
 // Translate lat and lon to a "real place"
 const renderLocation = (loc, city) => {
+  if (!city) return <h2>Loading city...</h2>;
+
   return (
     <div className="locationContainer">
       <h3>Latitude: {loc.lat}</h3> {/* REMOVE */}
