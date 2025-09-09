@@ -8,8 +8,8 @@ const renderLocation = (loc, city) => {
 
   return (
     <div className="locationContainer">
-      <h3>Latitude: {loc.lat}</h3> {/* REMOVE */}
-      <h3>Longitude: {loc.lon}</h3> {/* REMOVE */}
+      {/* <h3>Latitude: {loc.lat}</h3> REMOVE */}
+      {/* <h3>Longitude: {loc.lon}</h3> REMOVE */}
       <h2 className="city-text">{city.address.suburb}</h2>
     </div>
   );
