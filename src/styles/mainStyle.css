@@ -1,0 +1,10 @@
+.container-day {
+  width: 100%;
+  justify-items: center;
+}
+
+.container-night {
+  width: 100%;
+  background-color: darkslateblue; /* CHANGE LATER */
+  justify-items: center;
+}

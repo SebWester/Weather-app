@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { fetchWeatherData } from "../services/weatherData";
+import { ThemeContext } from "../contexts/themeContext";
 import { LocationContext } from "../contexts/locationContext";
 import WeatherCard from "./WeatherCard";
 import "../styles/weatherStyle.css";
@@ -9,6 +10,9 @@ function ShowWeather() {
   const [currentIndex, setCurrentIndex] = useState();
   const [loading, setLoading] = useState(true);
   const { location } = useContext(LocationContext);
+  const { theme, setTheme } = useContext(ThemeContext);
+
+  console.log(theme);
 
   // Fetch weather data
   useEffect(() => {
@@ -17,6 +21,7 @@ function ShowWeather() {
       const currentData = await fetchWeatherData(location);
 
       setData(currentData);
+      // Set theme
       setLoading(false);
     };
 
@@ -34,10 +39,14 @@ function ShowWeather() {
 
     if (index !== -1) {
       setCurrentIndex(index + 2); // +2 due to GMT timezone
+      // Set theme
+
+      const isDay = data.hourly.is_day[currentIndex] === 1 ? "light" : "dark";
+      setTheme(isDay);
     } else {
       console.log("Couldn't set index");
     }
-  }, [data]);
+  }, [data, setTheme, currentIndex]);
 
   console.log(data);
 
@@ -50,19 +59,37 @@ function ShowWeather() {
   };
 
   const renderWeatherData = () => {
+    // FIX className depending on theme
     return (
       <div className="weather-container">
-        <WeatherCard data={data.hourly.time[currentIndex]} />
-        <WeatherCard data={data.hourly.cloud_cover[currentIndex]} />
+        {/* Temperature */}
+        <WeatherCard
+          title="Temperature"
+          data={data.hourly.temperature_2m[currentIndex]}
+          unit={data.hourly_units.temperature_2m}
+        />
+        {/* Cloud coverage */}
+        <WeatherCard
+          title="Cloud coverage"
+          data={data.hourly.cloud_cover[currentIndex]}
+          unit={data.hourly_units.cloud_cover}
+        />
+        {/* Wind speed */}
+        <WeatherCard
+          title="Wind speed"
+          data={data.hourly.wind_speed_10m[currentIndex]}
+          unit={data.hourly_units.wind_speed_10m}
+        />
+        {/* Wind gusts */}
+        <WeatherCard
+          title="Wind gusts"
+          data={data.hourly.wind_gusts_10m[currentIndex]}
+          unit={data.hourly_units.wind_gusts_10m}
+        />
       </div>
     );
   };
-  return (
-    <div>
-      <h3>Display weather here</h3>
-      {loading ? renderLoading() : renderWeatherData()}
-    </div>
-  );
+  return <div>{loading ? renderLoading() : renderWeatherData()}</div>;
 }
 
 export default ShowWeather;
