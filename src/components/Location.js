@@ -34,7 +34,7 @@ function DisplayLocation() {
 
       const data = await response.json();
       setCity(data);
-      console.log(data);
+      // console.log(data);
     };
 
     if (location) {
