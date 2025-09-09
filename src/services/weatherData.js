@@ -4,7 +4,7 @@ export const fetchWeatherData = async (location) => {
   }
 
   const { lat, lon } = location;
-  const BASE_URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,rain,snowfall,cloud_cover,visibility,wind_speed_10m,is_day`;
+  const BASE_URL = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m,rain,snowfall,cloud_cover,visibility,wind_speed_10m,is_day&wind_speed_unit=ms`;
 
   const response = await fetch(BASE_URL);
 
