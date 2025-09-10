@@ -7,3 +7,35 @@
   align-items: center;
   justify-content: center;
 }
+
+.showCard {
+  /* Add background images here */
+}
+
+.hideCard {
+  width: 40px;
+  height: 300px;
+}
+
+.showText {
+  display: block;
+  text-align: center;
+}
+
+.hideText {
+  display: none;
+}
+
+.toggleButton {
+  background-color: transparent;
+  border: none;
+}
+
+.toggleButton:hover {
+  cursor: pointer;
+}
+
+.fa-solid {
+  color: black;
+  font-size: 30px;
+}
