@@ -12,8 +12,6 @@ function ShowWeather() {
   const { location } = useContext(LocationContext);
   const { theme, setTheme } = useContext(ThemeContext);
 
-  console.log(theme);
-
   // Fetch weather data
   useEffect(() => {
     const getWeatherData = async () => {
@@ -39,8 +37,6 @@ function ShowWeather() {
 
     if (index !== -1) {
       setCurrentIndex(index + 2); // +2 due to GMT timezone
-      // Set theme
-
       const isDay = data.hourly.is_day[currentIndex] === 1 ? "light" : "dark";
       setTheme(isDay);
     } else {
@@ -73,6 +69,18 @@ function ShowWeather() {
           title="Cloud coverage"
           data={data.hourly.cloud_cover[currentIndex]}
           unit={data.hourly_units.cloud_cover}
+        />
+        {/* Rain */}
+        <WeatherCard
+          title="Rain"
+          data={data.hourly.rain[currentIndex]}
+          unit={data.hourly_units.rain}
+        />
+        {/* Snow */}
+        <WeatherCard
+          title="Snow"
+          data={data.hourly.snowfall[currentIndex]}
+          unit={data.hourly_units.snowfall}
         />
         {/* Wind speed */}
         <WeatherCard
