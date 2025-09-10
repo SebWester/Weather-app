@@ -5,6 +5,7 @@
 
 .container-night {
   width: 100%;
-  background-color: darkslateblue; /* CHANGE LATER */
+  background-color: #1a2222;
+  color: #d7cebc;
   justify-items: center;
 }

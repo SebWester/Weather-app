@@ -11,9 +11,13 @@
   height: 50px;
   align-items: center;
   justify-content: center;
-  border: 1px solid black; /* FIX LATER */
 }
 
 .title {
-  font-size: 24px;
+  font-size: 40px;
+}
+
+.dark {
+  background-color: #1a2222;
+  color: #d7cebc;
 }
