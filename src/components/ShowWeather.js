@@ -10,7 +10,9 @@ function ShowWeather() {
   const [currentIndex, setCurrentIndex] = useState();
   const [loading, setLoading] = useState(true);
   const { location } = useContext(LocationContext);
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { setTheme } = useContext(ThemeContext);
+
+  // USE THEME IN CARDS
 
   // Fetch weather data
   useEffect(() => {
