@@ -1,29 +1,10 @@
-import { useState } from "react";
 import "../styles/cardStyle.css";
 
-function WeatherCard({ title, data, unit }) {
-  const [showCard, setShowCard] = useState(true);
-
-  // Toggle display/hide weather card
-  const toggleDisplay = () => {
-    setShowCard((prev) => !prev);
-  };
-
-  const cardClass = showCard ? "showCard" : "hideCard";
-  const showText = showCard ? "showText" : "hideText";
-  const eyecon = showCard ? (
-    <i className="fa-solid fa-eye"></i>
-  ) : (
-    <i className="fa-solid fa-eye-slash"></i>
-  );
-
+function WeatherCard({ title, data, unit, toggleClass }) {
   // Add background
   return (
-    <div className={`card-container ${cardClass}`}>
-      <button className="toggleButton" onClick={toggleDisplay}>
-        {eyecon}
-      </button>
-      <div className={showText}>
+    <div className={`card-container`}>
+      <div>
         <h2>{title}</h2>
         <div className="weather-info">
           <h3>
