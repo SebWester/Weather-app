@@ -1,6 +1,6 @@
 import "../styles/cardStyle.css";
 
-function WeatherCard({ title, data, unit, toggleClass }) {
+function WeatherCard({ title, data, unit }) {
   // Add background
   return (
     <div className={`card-container`}>
