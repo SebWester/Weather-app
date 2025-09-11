@@ -1,5 +1,7 @@
 import { useState } from "react";
 import WeatherCard from "./WeatherCard";
+import { useContext } from "react";
+import { ThemeContext } from "../contexts/themeContext";
 import "../styles/cardStyle.css";
 
 export const RenderWeatherData = ({ currentIndex, data }) => {
@@ -12,12 +14,16 @@ export const RenderWeatherData = ({ currentIndex, data }) => {
     day = day + 1;
   }
 
+  const { theme } = useContext(ThemeContext);
+  console.log(theme);
   const [displayCard, setDisplayCard] = useState(true);
   const cardClass = displayCard ? "showCard" : "hideCard";
+  const showTime = displayCard ? "showTime" : "hideTime";
+  const faIconColor = theme === "light" ? "darkIcon" : "lightIcon";
   const eyecon = displayCard ? (
-    <i className="fa-solid fa-eye"></i>
+    <i className={`fa-solid fa-eye ${faIconColor}`}></i>
   ) : (
-    <i className="fa-solid fa-eye-slash"></i>
+    <i className={`fa-solid fa-eye-slash ${faIconColor}`}></i>
   );
 
   const toggleShowCard = () => {
@@ -27,13 +33,17 @@ export const RenderWeatherData = ({ currentIndex, data }) => {
   return (
     <div className={`weather-container ${cardClass}`}>
       <div style={{ alignSelf: "center" }}>
-        <h2>{time.toString().padStart(2, "0")}:00</h2>
+        <div className={showTime}>
+          <h2>{time.toString().padStart(2, "0")}:00</h2>
 
-        <h2>
-          {month}/{day}
-        </h2>
+          <h2>
+            {month}/{day}
+          </h2>
+        </div>
 
-        <button onClick={toggleShowCard}>{eyecon}</button>
+        <button className="toggleButton" onClick={toggleShowCard}>
+          {eyecon}
+        </button>
       </div>
 
       {displayCard && (
