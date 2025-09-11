@@ -2,7 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { fetchWeatherData } from "../services/weatherData";
 import { ThemeContext } from "../contexts/themeContext";
 import { LocationContext } from "../contexts/locationContext";
-import { renderWeatherData } from "./renderWeatherData.js";
+import { RenderWeatherData } from "./renderWeatherData.js";
 import "../styles/weatherStyle.css";
 
 function ShowWeather() {
@@ -13,9 +13,9 @@ function ShowWeather() {
   const { setTheme } = useContext(ThemeContext);
 
   const showWeekly = (index, data) => {
-    return Array.from({ length: 12 }, (_, i) =>
-      renderWeatherData(index + i, data)
-    );
+    return Array.from({ length: 12 }, (_, i) => (
+      <RenderWeatherData key={i} currentIndex={index + i} data={data} />
+    ));
   };
 
   // Fetch weather data
