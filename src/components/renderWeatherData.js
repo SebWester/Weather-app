@@ -15,7 +15,6 @@ export const RenderWeatherData = ({ currentIndex, data }) => {
   }
 
   const { theme } = useContext(ThemeContext);
-  console.log(theme);
   const [displayCard, setDisplayCard] = useState(true);
   const cardClass = displayCard ? "showCard" : "hideCard";
   const showTime = displayCard ? "showTime" : "hideTime";

@@ -30,7 +30,7 @@ function Header() {
             className="infoButton"
             onClick={() => setShowInfo((prev) => !prev)}
           >
-            <i class={`fa-solid fa-question ${buttonClass}`}></i>
+            <i className={`fa-solid fa-question ${buttonClass}`}></i>
           </button>
           {showInfo ? displayInfo() : null}
         </div>
