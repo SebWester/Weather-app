@@ -6,7 +6,7 @@ import "../styles/cardStyle.css";
 
 export const RenderWeatherData = ({ currentIndex, data }) => {
   // FIX className depending on theme
-  console.log("DATA:", data);
+  // console.log("DATA:", data);
   const time = currentIndex % 24;
   let month = new Date().getMonth() + 1;
   let day = new Date().getUTCDate();
@@ -50,35 +50,35 @@ export const RenderWeatherData = ({ currentIndex, data }) => {
           {/* Temperature */}
           <WeatherCard
             title="Temperature"
-            icon={<i class="fa-solid fa-temperature-low"></i>}
+            icon={<i className="fa-solid fa-temperature-low"></i>}
             data={data.hourly.temperature_2m[currentIndex]}
             unit={data.hourly_units.temperature_2m}
           />
           {/* Cloud coverage */}
           <WeatherCard
             title="Cloud coverage"
-            icon={<i class="fa-solid fa-cloud"></i>}
+            icon={<i className="fa-solid fa-cloud"></i>}
             data={data.hourly.cloud_cover[currentIndex]}
             unit={data.hourly_units.cloud_cover}
           />
           {/* Rain */}
           <WeatherCard
             title="Rain"
-            icon={<i class="fa-solid fa-cloud-rain"></i>}
+            icon={<i className="fa-solid fa-cloud-rain"></i>}
             data={data.hourly.rain[currentIndex]}
             unit={data.hourly_units.rain}
           />
           {/* Snow */}
           <WeatherCard
             title="Snow"
-            icon={<i class="fa-solid fa-snowflake"></i>}
+            icon={<i className="fa-solid fa-snowflake"></i>}
             data={data.hourly.snowfall[currentIndex]}
             unit={data.hourly_units.snowfall}
           />
           {/* Wind speed */}
           <WeatherCard
             title="Wind speed"
-            icon={<i class="fa-solid fa-wind"></i>}
+            icon={<i className="fa-solid fa-wind"></i>}
             data={
               data.hourly.wind_speed_10m[currentIndex] +
               ` (${data.hourly.wind_gusts_10m[currentIndex]}) `
