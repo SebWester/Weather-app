@@ -5,7 +5,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(245, 245, 245, 0.1);
+  background-color: rgba(245, 245, 245, 0.5);
 }
 
 /* .showCard {
@@ -49,6 +49,11 @@
 
 .toggleButton:hover {
   cursor: pointer;
+}
+
+.weather-info {
+  margin-top: 10px;
+  font-size: 22px;
 }
 
 .fa-solid {
