@@ -1,8 +1,10 @@
 # WEATHER APP TEST
 
-### Made with react
+### Made with React
 
-- Using API:s from open-meteo and openstreetmap
+- This application is built with React and leverages the browser’s geolocation API to detect the user’s current location.
+
+- It retrieves real-time weather data from the Open-Meteo API and features a responsive, user-friendly interface, demonstrating practical implementation of React components, state management, and API integration.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
