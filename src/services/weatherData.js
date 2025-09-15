@@ -1,6 +1,7 @@
 export const fetchWeatherData = async (location) => {
   if (!location) {
     console.log("COULD NOT GET CURRENT LOCATION");
+    return;
   }
 
   const { lat, lon } = location;
