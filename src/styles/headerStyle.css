@@ -21,3 +21,36 @@
   background-color: #1a2222;
   color: #d7cebc;
 }
+
+.infoButton {
+  background-color: transparent;
+  border: none;
+}
+
+.infoDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.infoButton:hover {
+  transform: translate(1px);
+  text-shadow: 1px 0px 40px black;
+}
+
+.infoContainer {
+  position: absolute;
+  padding: 20px;
+  width: 300px;
+  justify-self: center;
+  border: 1px solid rgba(245, 245, 245, 1);
+  border-radius: 12px;
+  background-color: whitesmoke;
+}
+
+.darkButton {
+  color: black;
+}
+
+.lightButton {
+  color: white;
+}
