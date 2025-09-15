@@ -7,63 +7,55 @@ import "../styles/weatherStyle.css";
 
 function ShowWeather() {
   const [data, setData] = useState(null);
-  const [currentIndex, setCurrentIndex] = useState();
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [loading, setLoading] = useState(true);
-  const { location } = useContext(LocationContext);
+  const { location, error } = useContext(LocationContext);
   const { setTheme } = useContext(ThemeContext);
 
-  const showWeekly = (index, data) => {
-    return Array.from({ length: 12 }, (_, i) => (
-      <RenderWeatherData key={i} currentIndex={index + i} data={data} />
-    ));
-  };
-
-  // Fetch weather data
   useEffect(() => {
+    if (!location) return;
+
     const getWeatherData = async () => {
       setLoading(true);
       const currentData = await fetchWeatherData(location);
-
-      setData(currentData);
-      // Set theme
+      if (currentData) setData(currentData);
       setLoading(false);
     };
 
     getWeatherData();
   }, [location]);
 
-  // Get current index for weather data
   useEffect(() => {
-    if (!data) {
-      console.log("No data available.");
-      return;
-    }
+    if (!data) return;
+
     const currentTime = new Date().toISOString().slice(0, 13) + ":00";
     const index = data.hourly.time.indexOf(currentTime);
 
     if (index !== -1) {
       setCurrentIndex(index + 2); // +2 due to GMT timezone
-      const isDay = data.hourly.is_day[currentIndex] === 1 ? "light" : "dark";
+      const isDay = data.hourly.is_day[index] === 1 ? "light" : "dark";
       setTheme(isDay);
-    } else {
-      console.log("Couldn't set index");
     }
-  }, [data, setTheme, currentIndex]);
+  }, [data, setTheme]);
 
-  const renderLoading = () => {
-    return (
-      <div>
-        <h2>Loading weather...</h2>
-      </div>
-    );
-  };
-
-  return (
+  const renderLoading = () => (
     <div>
-      {/* {loading ? renderLoading() : renderWeatherData(currentIndex, data)} */}
-      {loading ? renderLoading() : showWeekly(currentIndex, data)}
+      <h2>Loading weather...</h2>
     </div>
   );
+
+  if (error) return <p>{error}</p>;
+  if (!location) return <p>Waiting for location...</p>;
+  if (loading) return renderLoading();
+  if (!data) return <p>No data available.</p>;
+
+  // Render weatherCard
+  const showWeekly = () =>
+    Array.from({ length: 12 }, (_, i) => (
+      <RenderWeatherData key={i} currentIndex={currentIndex + i} data={data} />
+    ));
+
+  return <div>{showWeekly()}</div>;
 }
 
 export default ShowWeather;
