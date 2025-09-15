@@ -51,39 +51,47 @@ export const RenderWeatherData = ({ currentIndex, data }) => {
           {/* Temperature */}
           <WeatherCard
             title="Temperature"
+            icon={<i class="fa-solid fa-temperature-low"></i>}
             data={data.hourly.temperature_2m[currentIndex]}
             unit={data.hourly_units.temperature_2m}
           />
           {/* Cloud coverage */}
           <WeatherCard
             title="Cloud coverage"
+            icon={<i class="fa-solid fa-cloud"></i>}
             data={data.hourly.cloud_cover[currentIndex]}
             unit={data.hourly_units.cloud_cover}
           />
           {/* Rain */}
           <WeatherCard
             title="Rain"
+            icon={<i class="fa-solid fa-cloud-rain"></i>}
             data={data.hourly.rain[currentIndex]}
             unit={data.hourly_units.rain}
           />
           {/* Snow */}
           <WeatherCard
             title="Snow"
+            icon={<i class="fa-solid fa-snowflake"></i>}
             data={data.hourly.snowfall[currentIndex]}
             unit={data.hourly_units.snowfall}
           />
           {/* Wind speed */}
           <WeatherCard
             title="Wind speed"
-            data={data.hourly.wind_speed_10m[currentIndex]}
+            icon={<i class="fa-solid fa-wind"></i>}
+            data={
+              data.hourly.wind_speed_10m[currentIndex] +
+              ` (${data.hourly.wind_gusts_10m[currentIndex]}) `
+            }
             unit={data.hourly_units.wind_speed_10m}
           />
           {/* Wind gusts */}
-          <WeatherCard
+          {/* <WeatherCard
             title="Wind gusts"
-            data={data.hourly.wind_gusts_10m[currentIndex]}
+            data={data.hourly.wind_gusts_10m[currentIndex] + `(helo)`}
             unit={data.hourly_units.wind_gusts_10m}
-          />
+          /> */}
         </>
       )}
     </div>
